@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useAuthState } from "../../context/AuthProvider";
 import axios from "axios";
 
 import TopNavbar from "../navbar/TopNavbar";
 
-import "../../assets/style/AddBook.css";
+import "../../assets/style/Global.css";
 
 const AddBook = () => {
   const [wishlist, setWishlist] = useState("");
@@ -12,6 +13,7 @@ const AddBook = () => {
   const [author, setAuthor] = useState("");
   const [img, setImg] = useState("");
   const [type, setType] = useState("");
+  const { user } = useAuthState();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,9 +29,9 @@ const AddBook = () => {
       })
       .then((res) => res.data)
       .then((data) => {
-        axios.post(`${process.env.REACT_APP_URL_API}users/1/books`, {
+        axios.post(`${process.env.REACT_APP_URL_API}users/${user.id}/books`, {
           book_id: data.insertId,
-          user_id: 1,
+          user_id: user.id,
         });
       });
   };

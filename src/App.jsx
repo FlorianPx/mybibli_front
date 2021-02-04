@@ -1,15 +1,22 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 
-import TopNavbar from "./components/navbar/TopNavbar";
-import AddBook from "./components/form/AddBook";
+import Login from "./components/login/Login";
+import { useAuthState } from "./context/AuthProvider";
+import AuthenticatedApp from "./AuthenticatedApp";
 
 const App = () => {
+  const { isAuthenticated } = useAuthState();
+
+  if (isAuthenticated) {
+    return <AuthenticatedApp />;
+  }
+
   return (
     <Switch>
-      <Route exact path="/" component={TopNavbar} />
-      <Route path="/addbooks" component={AddBook} />
+      <Route exact path="/" component={Login} />
+      <Redirect from="/*" to="/" />
     </Switch>
   );
 };
