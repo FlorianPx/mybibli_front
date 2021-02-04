@@ -1,0 +1,52 @@
+.wrapper-Pages {
+  position: relative;
+  background-color: #2e2e41;
+  color: #ffffff;
+  height: 100%;
+}
+.wrapper-card-Pages {
+  background-color: #2e2e41;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-Pages {
+  background-color: #22212f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-basis: 25%;
+  border-radius: 30px;
+  margin: 15px;
+  padding: 15px;
+}
+
+.title-card-Pages {
+  margin: 4px 0;
+}
+.img-card-Pages {
+  width: 160px;
+  height: 210px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+.author-card-Pages {
+  font-size: 14px;
+  margin: 0;
+}
+.type-card-Pages {
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-size: 14px;
+}
+
+/* ______MediaQuerie_____ */
+
+@media screen and (min-width: 750px) {
+  .wrapper-card-Pages {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
