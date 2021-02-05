@@ -22,7 +22,7 @@ const BottomNavbar = () => {
         <Wishlist className="logo-bottomNavbar" />
         Mes envies
       </NavLink>
-      <NavLink exact to="/" className="link-bottomNavbar">
+      <NavLink exact to="/search" className="link-bottomNavbar">
         <Magnifier className="logo-bottomNavbar" />
         Rechercher
       </NavLink>

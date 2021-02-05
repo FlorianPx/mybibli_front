@@ -21,28 +21,22 @@ const AuthProvider = ({ children }) => {
           },
         }
       )
-      .then(
-        ({
-          data: {
-            results: { formData },
+      .then(({ data: { formData } }) => {
+        setState({
+          ...state,
+          user: {
+            ...state.user,
+            id: formData.id,
+            iconId: formData.image_id,
+            name: formData.name,
           },
-        }) => {
-          setState({
-            ...state,
-            user: {
-              ...state.user,
-              id: formData.id,
-              iconId: formData.image_id,
-              name: formData.name,
-            },
-            status: "success",
-          });
-        }
-      )
+          status: "success",
+        });
+      })
       .catch(() => {
         setState({ ...state, status: "error" });
       });
-  }, [state]);
+  }, []);
 
   const login = (email, password) => {
     axios
