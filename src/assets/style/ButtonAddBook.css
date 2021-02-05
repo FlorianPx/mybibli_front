@@ -1,0 +1,20 @@
+.button-buttonAddBook {
+  background-color: transparent;
+  position: fixed;
+  bottom: 12%;
+  right: 3%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.image-buttonAddBook {
+  width: 30px;
+}
+
+/* ______MediaQuerie_____ */
+
+@media screen and (min-width: 750px) {
+  .image-buttonAddBook {
+    width: 40px;
+  }
+}

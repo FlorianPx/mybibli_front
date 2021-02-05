@@ -44,7 +44,7 @@ const Login = () => {
         </label>
         <label className="label-input-form">
           <input
-            type="text"
+            type="password"
             id="password"
             placeholder="Mot de passe"
             onChange={handlePasswordChange}

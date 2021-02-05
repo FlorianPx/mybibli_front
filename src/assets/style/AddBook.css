@@ -3,10 +3,12 @@
   background-color: #1e1e2a;
 }
 .wrapper-form {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #ffffff;
+  background-color: #1e1e2a;
 }
 .wrapper-radio-form {
   width: 60%;

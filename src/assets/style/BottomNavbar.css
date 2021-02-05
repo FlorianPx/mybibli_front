@@ -11,9 +11,10 @@
 .link-bottomNavbar {
   display: flex;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   color: #55556b;
-  font-size: 14px;
+  font-size: 13px;
   text-decoration: none;
   padding: 0 15px;
 }
@@ -45,4 +46,12 @@
 .button-bottomNavbar.active,
 .button-bottomNavbar:hover {
   color: #ffffff;
+}
+
+/* ______MediaQuerie_____ */
+
+@media screen and (min-width: 750px) {
+  .link-bottomNavbar {
+    font-size: 15px;
+  }
 }

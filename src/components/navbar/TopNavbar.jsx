@@ -4,13 +4,21 @@ import { svgArrays } from "../../svgArray";
 
 import "../../assets/style/Global.css";
 import { useAuthState } from "../../context/AuthProvider";
+import { useHistory } from "react-router-dom";
 
 const TopNavbar = () => {
   const { user } = useAuthState();
+  const history = useHistory();
+
+  const handleReturnClick = () => {
+    history.push("./home");
+  };
 
   return (
     <div className="wrapper_navbar">
-      <p className="logo_navbar">MyBibli</p>
+      <button className="logo_navbar" onClick={handleReturnClick}>
+        MyBibli
+      </button>
       <button className="button_navbar">
         {user && (
           <img
