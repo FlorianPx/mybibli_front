@@ -4,8 +4,6 @@ import BookList from "./BookList";
 import axios from "axios";
 
 import "../../assets/style/Global.css";
-import TopNavbar from "../navbar/TopNavbar";
-import BottomNavbar from "../navbar/BottomNavbar";
 import ButtonAddBook from "../navbar/ButtonAddBook";
 
 const SearchPage = () => {
@@ -39,12 +37,11 @@ const SearchPage = () => {
 
   return (
     <div className="wrapper-Pages">
-      <TopNavbar />
       <h2 className="title-searchPage">Rechercher un livre</h2>
       <SearchBar input={input} onChange={updateInput} />
       <BookList bookList={bookList} />
       <ButtonAddBook />
-      <BottomNavbar />
+      <div className="end-Pages"></div>
     </div>
   );
 };

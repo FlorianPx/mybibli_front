@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
         setState({
           ...state,
           status: "success",
-          user: { id: data.id, token: data.token },
+          user: { ...data },
         });
       })
       .catch((error) => {

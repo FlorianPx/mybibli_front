@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import { svgArrays } from "../../svgArray";
 
@@ -14,16 +14,21 @@ const TopNavbar = () => {
     history.push("./home");
   };
 
+  const picture = useMemo(
+    () => svgArrays.find((icon) => icon.id === user.iconId).picture,
+    [user]
+  );
+
   return (
     <div className="wrapper_navbar">
       <button className="logo_navbar" onClick={handleReturnClick}>
         MyBibli
       </button>
       <button className="button_navbar">
-        {user && (
+        {picture && (
           <img
             className="image_navbar"
-            src={svgArrays.find((icon) => Number(icon.id) === user.iconId).src}
+            src={picture}
             alt={`Avatar du compte de ${user.name}`}
           />
         )}

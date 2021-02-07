@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useAuthState } from "../../context/AuthProvider";
 import axios from "axios";
 
-import TopNavbar from "../navbar/TopNavbar";
-
 import "../../assets/style/Global.css";
 
 const AddBook = () => {
@@ -20,8 +18,6 @@ const AddBook = () => {
 
     axios
       .post(`${process.env.REACT_APP_URL_API}books`, {
-        wishlist,
-        favorite,
         title,
         author,
         img,
@@ -32,6 +28,8 @@ const AddBook = () => {
         axios.post(`${process.env.REACT_APP_URL_API}users/${user.id}/books`, {
           book_id: data.insertId,
           user_id: user.id,
+          favorite,
+          wishlist,
         });
       });
   };
@@ -57,7 +55,6 @@ const AddBook = () => {
 
   return (
     <div className="global-form">
-      <TopNavbar />
       <form className="wrapper-form">
         <h2 className="title-form">Ajouter le livre dans :</h2>
         <div className="wrapper-radio-form">
@@ -111,6 +108,7 @@ const AddBook = () => {
           <option value="">Sélectionner le genre du livre</option>
           <option value="BD">BD</option>
           <option value="Comics">Comics</option>
+          <option value="Fantastique">Fantastique</option>
           <option value="Manga">Manga</option>
           <option value="Roman">Roman</option>
           <option value="Roman Graphique">Roman Graphique</option>
