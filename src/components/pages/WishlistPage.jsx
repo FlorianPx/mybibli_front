@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "../../context/AuthProvider";
 import axios from "axios";
 
-import TopNavbar from "../navbar/TopNavbar";
-import BottomNavbar from "../navbar/BottomNavbar";
 import ButtonAddBook from "../navbar/ButtonAddBook";
 
 import "../../assets/style/Global.css";
-import Delete from "../../assets/images/svg/remove.svg";
+import Delete from "../../assets/images/svg/trash.svg";
 
 const WishlistPage = () => {
-  const [books, setBooks] = useState([""]);
   const { user } = useAuthState();
+
+  const [books, setBooks] = useState([""]);
 
   useEffect(() => {
     axios
@@ -36,37 +35,39 @@ const WishlistPage = () => {
 
   return (
     <div className="wrapper-Pages">
-      <TopNavbar />
       <div className="wrapper-card-Pages">
         {books.map((book) => (
           <article
             className="card-Pages"
             key={`${book.title} de ${book.author}`}
           >
-            <button
-              type="button"
-              className="delete-button-Pages"
-              onClick={() => handleDeleteClick(book)}
-            >
-              <img
-                src={Delete}
-                alt="Logo supprimer"
-                className="delete-logo-Pages"
-              />
-            </button>
             <h3 className="title-card-Pages">{book.title}</h3>
-            <p className="author-card-Pages">{`De ${book.author}`}</p>
+            <p className="author-card-Pages">{book.author}</p>
             <img
               src={book.img}
               alt={`Livre ${book.title} de ${book.author}`}
               className="img-card-Pages"
             />
-            <p className="type-card-Pages">{book.type}</p>
+            <div className="wrapper-button-Pages">
+              <button
+                type="button"
+                className="delete-button-Pages"
+                onClick={() => handleDeleteClick(book)}
+                title="Delete"
+              >
+                <img
+                  src={Delete}
+                  alt="Logo supprimer"
+                  className="delete-logo-Pages"
+                />
+              </button>
+              <div></div>
+            </div>
           </article>
         ))}
       </div>
       <ButtonAddBook />
-      <BottomNavbar />
+      <div className="end-Pages"></div>
     </div>
   );
 };

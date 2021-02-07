@@ -43,8 +43,8 @@
 .link-bottomNavbar:hover > .logo-bottomNavbar {
   color: #ffffff;
 }
-.button-bottomNavbar.active,
-.button-bottomNavbar:hover {
+.button-bottomNavbar:hover,
+.button-bottomNavbar:hover > .logo-bottomNavbar {
   color: #ffffff;
 }
 

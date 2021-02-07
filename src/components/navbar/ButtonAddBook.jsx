@@ -16,6 +16,7 @@ const ButtonAddBook = () => {
       type="button"
       className="button-buttonAddBook"
       onClick={handleClick}
+      title="Add book"
     >
       <Add className="image-buttonAddBook" />
     </button>

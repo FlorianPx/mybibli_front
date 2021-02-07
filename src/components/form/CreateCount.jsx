@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "../../assets/style/Global.css";
 
-const AddBook = () => {
+const CreateCount = () => {
   const [wishlist, setWishlist] = useState("");
   const [favorite, setFavorite] = useState("");
   const [title, setTitle] = useState("");
@@ -155,4 +155,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default CreateCount;

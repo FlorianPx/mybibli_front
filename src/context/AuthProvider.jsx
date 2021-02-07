@@ -36,6 +36,7 @@ const AuthProvider = ({ children }) => {
       .catch(() => {
         setState({ ...state, status: "error" });
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const login = (email, password) => {
@@ -47,7 +48,7 @@ const AuthProvider = ({ children }) => {
         setState({
           ...state,
           status: "success",
-          user: { id: data.id, token: data.token },
+          user: { ...data },
         });
       })
       .catch((error) => {
@@ -59,8 +60,6 @@ const AuthProvider = ({ children }) => {
     localStorage.clear();
     setState({ ...state, user: null, status: "pending" });
   };
-
-  const register = (formValues) => {};
 
   return (
     <AuthContext.Provider value={{ state, login, logout }}>
