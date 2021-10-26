@@ -5,39 +5,46 @@ import axios from "axios";
 import "../../assets/style/Global.css";
 
 const BookList = ({ bookList }) => {
-  const [booksClicked, setBooksClicked] = useState([]);
-  const [wishlist, setWishlist] = useState("");
-  const [favorite, setFavorite] = useState("");
+  const [bookClicked, setBookClicked] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [radioValue, setRadioValue] = useState("own");
+
   const { user } = useAuthState();
 
   const handleChange = (e) => {
-    setWishlist(e.target.value);
-    setFavorite(e.target.value);
+    setRadioValue(e.target.value);
   };
-  console.log({ booksClicked });
-  const handleClick = (e) => {
-    e.preventDefault();
-    const title = booksClicked[0].title;
-    const author = booksClicked[0].author;
-    const img = booksClicked[0].img;
-    const type = booksClicked[0].type;
 
-    axios
-      .post(`${process.env.REACT_APP_URL_API}books`, {
-        title,
-        author,
-        img,
-        type,
-      })
-      .then((res) => res.data)
-      .then((data) => {
-        axios.post(`${process.env.REACT_APP_URL_API}users/${user.id}/books`, {
-          book_id: data.insertId,
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const bookId = bookClicked.id;
+
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_URL_API}users/${user.id}/books`,
+        {
+          book_id: bookId,
           user_id: user.id,
-          favorite,
-          wishlist,
-        });
-      });
+          favorite: "false",
+          wishlist: radioValue === "wish" ? "true" : "false",
+        }
+      );
+
+      setSuccess(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleBookClicked = (book) => {
+    setBookClicked(book);
+  };
+
+  const handleCancelClick = () => {
+    setTimeout(() => {
+      setBookClicked(null);
+      setSuccess(false);
+    }, 100);
   };
 
   return (
@@ -45,9 +52,9 @@ const BookList = ({ bookList }) => {
       {bookList.map((book, index) => {
         return (
           <div
-            onClick={() => setBooksClicked([...booksClicked, book])}
+            onClick={(e) => handleBookClicked(book)}
             className="card-Pages"
-            key={index}
+            key={book.title}
           >
             <h3 className="title-card-Pages">{book.title}</h3>
             <p className="author-card-Pages">{book.author}</p>
@@ -56,38 +63,63 @@ const BookList = ({ bookList }) => {
               alt={`Livre ${book.title} de ${book.author}`}
               className="img-card-Pages"
             />
-            {booksClicked.includes(book) && (
+            {bookClicked?.id === book.id && (
               <div className="sidebar-Pages">
-                <h3 className="title-card-Pages">Ajouter ce livre à ?</h3>
-                <label className="label-radio-form">
-                  <input
-                    type="radio"
-                    id="own"
-                    value="false"
-                    checked={wishlist === "false"}
-                    onChange={handleChange}
-                    className="radio-form"
-                  />
-                  Mes livres
-                </label>
-                <label className="label-radio-form">
-                  <input
-                    type="radio"
-                    id="wish"
-                    value="true"
-                    checked={wishlist === "true"}
-                    onChange={handleChange}
-                    className="radio-form"
-                  />
-                  Mes Envies
-                </label>
-                <button
-                  className="button-form"
-                  type="buton"
-                  onClick={handleClick}
-                >
-                  Valider
-                </button>
+                {!success && (
+                  <>
+                    <h3 className="title-card-Pages">Ajouter ce livre à ?</h3>
+                    <form onSubmit={handleClick}>
+                      <label className="label-radio-form">
+                        <input
+                          type="radio"
+                          id="own"
+                          name="choice"
+                          value="own"
+                          checked={radioValue === "own"}
+                          onChange={handleChange}
+                          className="radio-form"
+                          required
+                        />
+                        Mes livres
+                      </label>
+                      <label className="label-radio-form">
+                        <input
+                          type="radio"
+                          id="wish"
+                          name="choice"
+                          value="wish"
+                          checked={radioValue === "wish"}
+                          onChange={handleChange}
+                          className="radio-form"
+                          required
+                        />
+                        Mes Envies
+                      </label>
+                      <button className="valid-button-form" type="submit">
+                        Valider
+                      </button>
+                    </form>
+                    <button
+                      className="cancel-button-form"
+                      type="button"
+                      onClick={handleCancelClick}
+                    >
+                      Annuler
+                    </button>
+                  </>
+                )}
+                {success && (
+                  <>
+                    <p>Ajouté !</p>
+                    <button
+                      className="cancel-button-form"
+                      type="button"
+                      onClick={handleCancelClick}
+                    >
+                      Ok
+                    </button>
+                  </>
+                )}
               </div>
             )}
           </div>

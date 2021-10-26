@@ -20,14 +20,20 @@ const WishlistPage = () => {
   }, [user.id]);
 
   const handleDeleteClick = (book) => {
+    console.log({ book });
     axios
-      .delete(`${process.env.REACT_APP_URL_API}books/${book.book_id}`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
+      .delete(
+        `${process.env.REACT_APP_URL_API}users/books/${book.userBook_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
       .then(() => {
-        const newBooks = books.filter((b) => b.book_id !== book.book_id);
+        const newBooks = books.filter(
+          (b) => b.userBook_id !== book.userBook_id
+        );
         setBooks(newBooks);
       })
       .catch((error) => console.log(error));
@@ -61,7 +67,6 @@ const WishlistPage = () => {
                   className="delete-logo-Pages"
                 />
               </button>
-              <div></div>
             </div>
           </article>
         ))}
