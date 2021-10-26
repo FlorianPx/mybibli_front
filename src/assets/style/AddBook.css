@@ -48,8 +48,19 @@
   margin-top: 30px;
   border-radius: 8px;
 }
-.button-form {
-  margin: 25px 0;
+.valid-button-form {
+  margin-top: 2rem;
+  padding: 0;
+  width: 85px;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #efbad3;
+}
+
+.cancel-button-form {
+  margin-top: 0.5rem;
   padding: 0;
   width: 85px;
   height: 28px;
