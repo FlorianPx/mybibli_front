@@ -4,10 +4,10 @@ This is the front part of the project.
 
 ## Installation
 
-Make a Git clone of this part and don't forget the back part : https://github.com/FlorianPx/checkpoint4-back.git
+Make a Git clone of this part and don't forget the back part : https://github.com/FlorianPx/mybibli_back.git
 
 ```bash
-git clone https://github.com/FlorianPx/checkpoint4_front.git
+git clone https://github.com/FlorianPx/mybibli_front.git
 ```
 
 ## Get ready !
