@@ -1,0 +1,57 @@
+.wrapper-bottomNavbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #262834;
+  position: fixed;
+  width: 100%;
+  height: 65px;
+  bottom: 0;
+}
+.link-bottomNavbar {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: #55556b;
+  font-size: 13px;
+  text-decoration: none;
+  padding: 0 15px;
+}
+.button-bottomNavbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #55556b;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  padding: 0;
+  margin: 10px;
+  cursor: pointer;
+}
+.logo-bottomNavbar {
+  width: 20px;
+  margin: 2px;
+  color: #55556b;
+}
+
+.link-bottomNavbar.active,
+.link-bottomNavbar.active > .logo-bottomNavbar,
+.link-bottomNavbar:hover,
+.link-bottomNavbar:hover > .logo-bottomNavbar {
+  color: #ffffff;
+}
+.button-bottomNavbar:hover,
+.button-bottomNavbar:hover > .logo-bottomNavbar {
+  color: #ffffff;
+}
+
+/* ______MediaQuerie_____ */
+
+@media screen and (min-width: 750px) {
+  .link-bottomNavbar {
+    font-size: 15px;
+  }
+}

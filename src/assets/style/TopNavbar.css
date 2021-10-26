@@ -1,0 +1,32 @@
+.wrapper_navbar {
+  background-color: #262834;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.logo_navbar {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  font-family: "Dancing Script", cursive;
+  margin: 5px 25px;
+  cursor: pointer;
+}
+.image_navbar {
+  width: 55px;
+}
+.button_navbar {
+  background-color: transparent;
+  padding: 0;
+  margin: 5px 25px;
+  cursor: pointer;
+  border: transparent;
+}
+.username_navbar {
+  color: #ffffff;
+  font-size: 16px;
+  margin: 0;
+}

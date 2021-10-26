@@ -1,0 +1,71 @@
+.global-form {
+  height: 100%;
+  background-color: #1e1e2a;
+}
+.wrapper-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  background-color: #1e1e2a;
+}
+.wrapper-radio-form {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.title-form {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+.radio-form {
+  margin: 5px;
+}
+.label-radio-form {
+  cursor: pointer;
+  margin: 5px;
+}
+.label-input-form {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.input-form {
+  width: 85%;
+  height: 28px;
+  padding: 0 8px;
+  margin-top: 30px;
+  border-radius: 8px;
+  border: none;
+}
+.select-form {
+  width: 44%;
+  height: 29px;
+  margin-top: 30px;
+  border-radius: 8px;
+}
+.valid-button-form {
+  margin-top: 2rem;
+  padding: 0;
+  width: 85px;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #efbad3;
+}
+
+.cancel-button-form {
+  margin-top: 0.5rem;
+  padding: 0;
+  width: 85px;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #efbad3;
+}
